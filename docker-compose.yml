@@ -16,7 +16,7 @@ services:
     image: bitnami/pgbouncer:1.22.0
     env_file: pgbouncer.env
     ports:
-      - 5432:5432
+      - 6432:6432
     depends_on:
       - postgresql
     volumes:
