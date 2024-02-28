@@ -47,3 +47,5 @@ openssl x509 -req -days 100000 -set_serial 01 -in certs/server.csr -out certs/se
 - Modify the `postgresql.conf` file to remove the comments from the cert files, uncomment the lines for the certs under `postgres -> volume` in the `docker-compose.yml` file, uncomment the last line in the `pg_hba.conf` file
 - Restart your server if it is running, else start it now.
 
+## Additional Notes
+You are responsible for implementing measures to properly secure your server. Set up firewalls and protect your credentials.
