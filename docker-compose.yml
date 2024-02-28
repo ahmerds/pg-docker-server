@@ -9,6 +9,8 @@ services:
       - ./conf/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
       - ./certs:/var/lib/postgresql/data/ssl
     restart: unless-stopped
+    # ports:
+      # - 5432:5432 # comment this if you wish to use pgbouncer
 
   pgbouncer:
     image: bitnami/pgbouncer:1.22.0
