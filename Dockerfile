@@ -11,6 +11,6 @@ RUN apk add postgresql-client --repository=https://dl-cdn.alpinelinux.org/alpine
 RUN rm -rf /var/cache/apk/*
 
 COPY ./src ./src
-COPY package.json .
+COPY ./package.json .
 
 CMD ["npm", "start"]
