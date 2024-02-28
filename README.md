@@ -48,4 +48,4 @@ openssl x509 -req -days 100000 -set_serial 01 -in certs/server.csr -out certs/se
 - Restart your server if it is running, else start it now.
 
 ## Additional Notes
-You are responsible for implementing measures to properly secure your server. Set up firewalls and protect your credentials.
+You are responsible for implementing measures to properly secure your server. Set up firewall and protect your credentials.
