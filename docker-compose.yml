@@ -9,20 +9,20 @@ services:
       - ./conf/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
       - ./certs:/var/lib/postgresql/data/ssl
     restart: unless-stopped
-    ports:
-      - 5432:5432 # comment this if you wish to use pgbouncer
+    # ports:
+      # - 5432:5432 # comment this if you wish to use pgbouncer
 
-  # pgbouncer:
-  #   image: bitnami/pgbouncer:1.22.0
-  #   env_file: pgbouncer.env
-  #   ports:
-  #     - 6432:6432
-  #   depends_on:
-  #     - postgresql
-  #   volumes:
-  #     - ./certs:/var/lib/postgresql/data/ssl
-  #     - ./conf/userlists/txt:/etc/pgbouncer/userlists.txt
-  #     - ./conf:/bitnami/pgbouncer/conf/
+  pgbouncer:
+    image: bitnami/pgbouncer:1.22.0
+    env_file: pgbouncer.env
+    ports:
+      - 6432:6432
+    depends_on:
+      - postgresql
+    volumes:
+      - ./certs:/var/lib/postgresql/data/ssl
+      # - ./conf/userlists/txt:/etc/pgbouncer/userlists.txt
+      - ./conf:/bitnami/pgbouncer/conf/
 
   backup:
     build: .
