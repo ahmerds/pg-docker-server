@@ -21,8 +21,8 @@ services:
       - postgresql
     volumes:
       - ./certs:/var/lib/postgresql/data/ssl
-      # - ./conf/userlists/txt:/etc/pgbouncer/userlists.txt
-      # - ./conf:/bitnami/pgbouncer/conf/
+      - ./conf/userlists/txt:/etc/pgbouncer/userlists.txt
+      - ./conf:/bitnami/pgbouncer/conf/
 
   backup:
     build: .
