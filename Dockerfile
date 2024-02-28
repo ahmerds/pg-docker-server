@@ -13,5 +13,4 @@ RUN rm -rf /var/cache/apk/*
 ADD ./src ./src
 ADD package.json .
 
-
 CMD ["npm", "start"]
