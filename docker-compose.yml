@@ -16,7 +16,7 @@ services:
     ports:
       - 5432:5432
     depends_on:
-      - postgres
+      - postgresql
     volumes:
       - ./certs:/var/lib/postgresql/data/ssl
 
