@@ -13,4 +13,6 @@ RUN rm -rf /var/cache/apk/*
 COPY ./src ./src
 COPY ./package.json .
 
+RUN npm install
+
 CMD ["npm", "start"]
