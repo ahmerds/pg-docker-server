@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  postgresql:
+    image: postgres:16-alpine
+    env_file: db.env
+    volumes:
+      - dbdata:/var/lib/postgresql/data/
+      - ./conf/pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf
+      - ./conf/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
+      - ./certs:/var/lib/postgresql/data/ssl
+    restart: unless-stopped
+
+  pgbouncer:
+    image: bitnami/pgbouncer:1.22.0
+    env_file: pgbouncer.env
+    ports:
+      - 5432:5432
+    depends_on:
+      - postgres
+    volumes:
+      - ./certs:/var/lib/postgresql/data/ssl
+
+  backup:
+    build: .
+    env_file: app.env
+    restart: unless-stopped
+    tmpfs:
+      - /tmp
+    depends_on:
+      - pgbouncer
+
+volumes:
+  dbdata:
+    driver: local
