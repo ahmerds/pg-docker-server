@@ -17,8 +17,6 @@ services:
     env_file: pgbouncer.env
     ports:
       - 6432:6432
-    depends_on:
-      - postgresql
     volumes:
       - ./certs:/var/lib/postgresql/data/ssl
       - ./conf/userlists.txt:/etc/pgbouncer/userlist.txt
