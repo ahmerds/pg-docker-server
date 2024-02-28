@@ -1,6 +1,6 @@
 FROM node:20-alpine
 
-LABEL maintainer="Ahmad Ash"
+LABEL maintainer="Ahmerd Ash"
 
 # Install dependencies
 RUN apk update
