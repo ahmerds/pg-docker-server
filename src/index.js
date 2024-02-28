@@ -11,4 +11,6 @@ const { doBackup } = require('./backup');
   cron.schedule(SCHEDULE, async () => {
     await doBackup();
   });
+
+  console.log('Backup server running 🛠️');
 })()
