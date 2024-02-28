@@ -10,7 +10,7 @@ RUN apk add openssl
 RUN apk add postgresql-client --repository=https://dl-cdn.alpinelinux.org/alpine/v3.19/main
 RUN rm -rf /var/cache/apk/*
 
-ADD ./src ./src
-ADD package.json .
+COPY ./src ./src
+COPY package.json .
 
 CMD ["npm", "start"]
