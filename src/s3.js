@@ -8,7 +8,7 @@ const S3_SECRET = process.env.S3_SECRET
 const S3_BUCKET = process.env.S3_BUCKET
 const S3_PREFIX = process.env.S3_PREFIX
 
-export async function uploadToS3(filename) {
+async function uploadToS3(filename) {
   if (!S3_ACCESS_KEY_ID || S3_SECRET) {
     return
   }
@@ -36,3 +36,5 @@ export async function uploadToS3(filename) {
   // Remove file. Not a critical step, don't await
   unlink(filename)
 }
+
+exports.uploadToS3 = uploadToS3

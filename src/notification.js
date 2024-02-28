@@ -1,7 +1,7 @@
 const { createTransport } = require("nodemailer")
 const { getEmail } = require("./email")
 
-export async function sendEmail(type) {
+async function sendEmail(type) {
   try {
     const SMTP_HOST = process.env.SMTP_HOST
     const SMTP_PORT = process.env.SMTP_PORT
@@ -35,3 +35,5 @@ export async function sendEmail(type) {
     console.log(`Error sending email notification: ${error}`)
   }
 }
+
+exports.sendEmail = sendEmail

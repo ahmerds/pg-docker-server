@@ -1,4 +1,4 @@
-export function getEmail(type) {
+function getEmail(type) {
   return `
   <head>
     <title>Backup Notification Mail</title>
@@ -112,3 +112,5 @@ export function getEmail(type) {
   </body>
   `
 }
+
+exports.getEmail = getEmail

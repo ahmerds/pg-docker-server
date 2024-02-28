@@ -11,7 +11,7 @@ const PG_DB = process.env.PG_DB
 const PG_DUMPALL = process.env.PG_DUMPALL
 let filename = `pgbackup_${new Date().toISOString()}.tar`
 
-export async function doBackup() {
+async function doBackup() {
   try {
     console.log('Starting Postgres backup...')
     const dump = Boolean(PG_DUMPALL) ? 'pg_dumpall' : 'pg_dump'
@@ -36,3 +36,5 @@ export async function doBackup() {
     await sendEmail('failure')
   }
 }
+
+exports.doBackup = doBackup
