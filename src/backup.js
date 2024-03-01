@@ -17,7 +17,7 @@ async function doBackup() {
     const dump = Boolean(PG_DUMPALL) ? 'pg_dumpall' : 'pg_dump'
     const db = dump ? `-d ${PG_DB}` : ''
     filename = `pgbackup_${new Date().toISOString()}.tar`
-    const cmd = `${dump} -h ${PG_HOST} -p ${PG_PORT} -U ${PG_USER} ${db} -f ${filename} --format=tar`
+    const cmd = `${dump} -h ${PG_HOST} -p ${PG_PORT} -U ${PG_USER} ${db} -f ${filename} -Fc`
 
     const output = execSync(cmd).toString()
     await gzip(filename, { output: `${filename}.gz` }) // Gzip file
