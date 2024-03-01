@@ -24,12 +24,14 @@ async function doBackup() {
     await unlink(filename) // Delete regular tar file
     console.log(`Backup successful\n${output}`)
     
-    console.log('Starting upload to S3...')
+    console.log(`Starting upload for ${filename} to S3...`)
     // Upload gzipped file
     await uploadToS3(`${filename}.gz`)
-    console.log('Uploaded to S3')
+    console.log('Uploaded to S3!')
 
+    console.log('Sending email notification...')
     await sendEmail('success')
+    console.log('Notification mail sent successfully!')
   } catch (error) {
     console.log(String(error))
     // Send failure notification
