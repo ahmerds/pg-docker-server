@@ -15,9 +15,9 @@ async function doBackup() {
   try {
     console.log('Starting Postgres backup...')
     const dump = Boolean(PG_DUMPALL) ? 'pg_dumpall' : 'pg_dump'
-    const db = dump ? `-d ${PG_DB}` : ''
+    const db = dump ? `-d ${PG_DB} -Fc` : ''
     filename = `pgbackup_${new Date().toISOString()}.tar`
-    const cmd = `${dump} -h ${PG_HOST} -p ${PG_PORT} -U ${PG_USER} ${db} -f ${filename} -Fc`
+    const cmd = `${dump} -h ${PG_HOST} -p ${PG_PORT} -U ${PG_USER} ${db} -f ${filename}`
 
     const output = execSync(cmd).toString()
     await gzip(filename, { output: `${filename}.gz` }) // Gzip file
