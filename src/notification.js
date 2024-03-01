@@ -11,7 +11,7 @@ async function sendEmail(type) {
     const EMAIL_TO_RECEIVE_NOTIFICATIONS = process.env.EMAIL_TO_RECEIVE_NOTIFICATIONS
     const body = getEmail(type)
 
-    if (!SMTP_HOST || EMAIL_TO_RECEIVE_NOTIFICATIONS) {
+    if (!SMTP_HOST || !EMAIL_TO_RECEIVE_NOTIFICATIONS) {
       console.log('Please provide SMTP details to procees')
       return
     } 

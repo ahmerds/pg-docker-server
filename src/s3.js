@@ -9,7 +9,7 @@ const S3_BUCKET = process.env.S3_BUCKET
 const S3_PREFIX = process.env.S3_PREFIX
 
 async function uploadToS3(filename) {
-  if (!S3_ACCESS_KEY_ID || S3_SECRET) {
+  if (!S3_ACCESS_KEY_ID || !S3_SECRET) {
     console.log('Please provide keys for your S3 to proceed')
     return
   }
